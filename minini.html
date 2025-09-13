@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0f172a" />
+  <title>For Tafadzwa 🌚 — You are my everything</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;700;900&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: linear-gradient(135deg, #0f0b1a 0%, #1a0b2e 25%, #16213e 50%, #2d1b69 75%, #0f172a 100%);
+      --accent: #ff6b9d;
+      --accent-2: #c44569;
+      --accent-3: #f8b500;
+      --glass: rgba(255,255,255,0.06);
+      --glass-border: rgba(255,255,255,0.12);
+      --text-glow: 0 0 18px rgba(255,255,255,0.08);
+      --heart-glow: 0 0 30px rgba(255, 107, 157, 0.28);
+      color-scheme: dark;
+      --max-card-width: 1000px;
+    }
+
+    * { box-sizing: border-box; }
+    html,body { height:100%; }
+
+    body{
+      margin:0;
+      min-height:100vh;
+      font-family:'Poppins',system-ui,Arial;
+      background:var(--bg);
+      background-attachment: fixed;
+      color:#f1f5f9;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      overflow-x:hidden;
+      position:relative;
+      line-height:1.5;
+    }
+
+    /* Floating hearts container (low-impact) */
+    .hearts{
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      pointer-events:none;
+      z-index:1;
+      overflow:hidden;
+    }
+
+    .heart{
+      position:absolute;
+      font-size:20px;
+      opacity:0.6;
+      animation:float linear forwards;
+      color:var(--accent);
+      filter:drop-shadow(var(--heart-glow));
+      will-change: transform, opacity;
+    }
+
+    @keyframes float {
+      0%   { transform: translateY(110vh) rotate(0deg); opacity:0; }
+      10%  { opacity:0.7; }
+      85%  { opacity:0.4; }
+      100% { transform: translateY(-10vh) rotate(360deg); opacity:0; }
+    }
+
+    .container{
+      position:relative;
+      z-index:2;
+      padding:28px;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .card{
+      width:100%;
+      max-width:var(--max-card-width);
+      background:linear-gradient(145deg, rgba(255,255,255,0.04), rgba(0,0,0,0.18));
+      border-radius:28px;
+      padding:36px;
+      border:1px solid var(--glass-border);
+      box-shadow:0 18px 50px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.03);
+      backdrop-filter: blur(14px);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .card::before{
+      content:'';
+      position:absolute;
+      top:0;
+      left:0;
+      right:0;
+      height:1px;
+      background:linear-gradient(90deg, transparent, rgba(255,255,255,0.14), transparent);
+    }
+
+    header{ text-align:center; margin-bottom:32px; position:relative; }
+
+    .avatar{
+      width:120px;
+      height:120px;
+      border-radius:50%;
+      background:linear-gradient(135deg,var(--accent) 0%, var(--accent-2) 55%, var(--accent-3) 100%);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:48px;
+      font-weight:700;
+      color:#fff;
+      margin:0 auto 20px;
+      box-shadow:0 20px 40px rgba(255, 107, 157, 0.22), inset 0 2px 0 rgba(255,255,255,0.06);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .avatar img {
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      border-radius:50%;
+      display:block;
+    }
+
+    /* Enhanced glowing motion effect */
+    @keyframes glow-pulse {
+      0% { 
+        transform:scale(1); 
+        box-shadow: 
+          0 0 20px rgba(255, 107, 157, 0.4),
+          0 0 40px rgba(255, 107, 157, 0.2),
+          0 0 60px rgba(255, 107, 157, 0.1),
+          0 20px 40px rgba(255, 107, 157, 0.22), 
+          inset 0 2px 0 rgba(255,255,255,0.06);
+      }
+      25% { 
+        transform:scale(1.05); 
+        box-shadow: 
+          0 0 30px rgba(255, 107, 157, 0.6),
+          0 0 60px rgba(255, 107, 157, 0.3),
+          0 0 90px rgba(255, 107, 157, 0.15),
+          0 25px 50px rgba(255, 107, 157, 0.3), 
+          inset 0 2px 0 rgba(255,255,255,0.1);
+      }
+      50% { 
+        transform:scale(1.08) rotate(2deg); 
+        box-shadow: 
+          0 0 40px rgba(248, 181, 0, 0.5),
+          0 0 80px rgba(248, 181, 0, 0.25),
+          0 0 120px rgba(248, 181, 0, 0.1),
+          0 30px 60px rgba(248, 181, 0, 0.25), 
+          inset 0 2px 0 rgba(255,255,255,0.12);
+      }
+      75% { 
+        transform:scale(1.05) rotate(-1deg); 
+        box-shadow: 
+          0 0 35px rgba(196, 69, 105, 0.6),
+          0 0 70px rgba(196, 69, 105, 0.3),
+          0 0 105px rgba(196, 69, 105, 0.15),
+          0 28px 55px rgba(196, 69, 105, 0.28), 
+          inset 0 2px 0 rgba(255,255,255,0.08);
+      }
+      100% { 
+        transform:scale(1) rotate(0deg); 
+        box-shadow: 
+          0 0 20px rgba(255, 107, 157, 0.4),
+          0 0 40px rgba(255, 107, 157, 0.2),
+          0 0 60px rgba(255, 107, 157, 0.1),
+          0 20px 40px rgba(255, 107, 157, 0.22), 
+          inset 0 2px 0 rgba(255,255,255,0.06);
+      }
+    }
+
+    @keyframes glow-ring {
+      0% { 
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+      }
+      50% { 
+        transform: scale(1.2) rotate(180deg);
+        opacity: 0.3;
+      }
+      100% { 
+        transform: scale(1) rotate(360deg);
+        opacity: 1;
+      }
+    }
+
+    .avatar { 
+      animation: glow-pulse 3s ease-in-out infinite;
+      position: relative;
+    }
+
+    .avatar::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      border-radius: 50%;
+      background: conic-gradient(from 0deg, 
+        rgba(255, 107, 157, 0.8) 0deg,
+        rgba(248, 181, 0, 0.8) 90deg,
+        rgba(196, 69, 105, 0.8) 180deg,
+        rgba(255, 107, 157, 0.8) 270deg,
+        rgba(255, 107, 157, 0.8) 360deg
+      );
+      animation: glow-ring 4s linear infinite;
+      z-index: -1;
+      opacity: 0.6;
+      filter: blur(8px);
+    }
+
+    .avatar::after {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      right: -5px;
+      bottom: -5px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, 
+        rgba(255, 107, 157, 0.3),
+        rgba(248, 181, 0, 0.3),
+        rgba(196, 69, 105, 0.3)
+      );
+      z-index: -1;
+      opacity: 0.8;
+      filter: blur(3px);
+      animation: glow-pulse 2.5s ease-in-out infinite reverse;
+    }
+
+    h1{
+      font-family:'Playfair Display',serif;
+      margin:0;
+      font-size:40px;
+      font-weight:700;
+      background:linear-gradient(135deg, var(--accent), var(--accent-3));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+      text-shadow:var(--text-glow);
+      margin-bottom:8px;
+    }
+
+    .subtitle{
+      font-family:'Dancing Script',cursive;
+      font-size:22px;
+      opacity:0.95;
+      margin-bottom:6px;
+      font-weight:600;
+    }
+
+    .tagline{
+      font-size:15px;
+      opacity:0.9;
+      font-weight:300;
+      max-width:640px;
+      margin:0 auto;
+    }
+
+    .content{
+      display:grid;
+      grid-template-columns:2fr 1fr;
+      gap:28px;
+      margin-top:28px;
+    }
+
+    .panel{
+      background:rgba(255,255,255,0.025);
+      padding:24px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,0.06);
+      backdrop-filter:blur(8px);
+      position:relative;
+      transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+    .panel:hover{
+      transform:translateY(-6px);
+      box-shadow:0 20px 40px rgba(0,0,0,0.32);
+      border-color:rgba(255,255,255,0.12);
+    }
+
+    .main-content{ display:flex; flex-direction:column; gap:20px; }
+
+    .note{
+      font-size:17px;
+      line-height:1.7;
+      color:#e6eef8;
+      font-weight:400;
+    }
+
+    .note strong{ color:var(--accent); font-weight:600; }
+
+    .poems{ display:flex; flex-direction:column; gap:18px; }
+
+    .poem{
+      padding:18px;
+      border-radius:12px;
+      background:linear-gradient(135deg, rgba(255,255,255,0.02), rgba(0,0,0,0.08));
+      border-left:4px solid var(--accent);
+    }
+    .poem p{ margin:0; line-height:1.7; font-size:16.5px; font-style:italic; color:#f7fbff; }
+
+    .love-letter{ background:linear-gradient(135deg, rgba(255, 107, 157, 0.06), rgba(196, 69, 105, 0.03)); border:2px solid rgba(255, 107, 157, 0.12); }
+
+    .love-letter h2{ font-family:'Dancing Script',cursive; font-size:26px; color:var(--accent); margin:0 0 12px 0; font-weight:600; }
+
+    .sidebar{ display:flex; flex-direction:column; gap:18px; }
+
+    .sidebar h3{ margin:0 0 12px 0; font-size:18px; color:var(--accent); font-weight:600; }
+
+    .flirty-lines{ list-style:none; padding:0; margin:0; }
+    .flirty-lines li{ padding:10px 0; border-bottom:1px solid rgba(255,255,255,0.04); font-size:15px; opacity:0.95; transition:all .2s ease; }
+    .flirty-lines li:hover{ opacity:1; color:var(--accent); transform:translateX(6px); }
+    .flirty-lines li:last-child{ border-bottom:none; }
+
+    .btn{
+      display:inline-block;
+      padding:11px 22px;
+      border-radius:50px;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      color:#fff;
+      font-weight:600;
+      border:none;
+      cursor:pointer;
+      text-decoration:none;
+      transition:all .2s ease;
+      box-shadow:0 8px 20px rgba(255, 107, 157, 0.24);
+      font-size:14px;
+    }
+    .btn:hover{ transform:translateY(-3px); box-shadow:0 14px 30px rgba(255, 107, 157, 0.36); }
+
+    .playlist{ list-style:none; padding:0; margin:10px 0 0 0; }
+    .playlist li{ padding:8px 0; font-size:14px; opacity:0.88; border-bottom:1px solid rgba(255,255,255,0.03); }
+    .playlist li:last-child{ border-bottom:none; }
+
+    footer{ text-align:center; margin-top:40px; padding-top:20px; border-top:1px solid rgba(255,255,255,0.08); font-family:'Dancing Script',cursive; font-size:18px; opacity:0.9; color:var(--accent); }
+
+    /* Responsive */
+    @media (max-width:880px){
+      .content{ grid-template-columns:1fr; }
+      .card{ padding:20px; margin:10px; }
+      h1{ font-size:32px; }
+      .avatar{ width:96px; height:96px; font-size:40px; }
+    }
+    @media (max-width:600px){
+      h1{ font-size:28px; }
+      .subtitle{ font-size:20px; }
+      .note{ font-size:15px; }
+      :root { --max-card-width: 900px; }
+    }
+
+    /* Accessibility / reduce motion */
+    @media (prefers-reduced-motion: reduce) {
+      .avatar, .heart { animation: none !important; }
+      .avatar::before, .avatar::after { animation: none !important; }
+      .panel, .poem { transition: none !important; transform: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="hearts" id="hearts" aria-hidden="true"></div>
+
+  <div class="container">
+    <div class="card" role="region" aria-label="Love card for Tafadzwa">
+      <header>
+        <div class="avatar" id="avatar" aria-hidden="false">         
+          <img
+            src="https://i.postimg.cc/TPPspzBt/20250913-184813.jpg"
+            alt="Portrait of Tafadzwa"
+            loading="lazy"
+            onerror="this.style.display='none'; this.parentNode.innerHTML='<span aria-hidden=true style=&quot;font-size:36px;font-weight:700;color:#fff;&quot;>Tz</span>';"
+          />
+        </div>
+
+        <h1>Tafadzwa</h1>
+        <div class="subtitle">My heart, my soul, my everything 🌚</div>
+        <div class="tagline">Sweet, spicy, and everything beautiful in this world. Made with all my love, dreams, and forever promises 💕</div>
+      </header>
+
+      <div class="content">
+        <main class="main-content">
+          <div class="panel love-letter" aria-labelledby="love-title">
+            <h2 id="love-title" style="font-family:'Dancing Script',cursive;font-size:24px;color:var(--accent);margin:0 0 12px 0">From my heart to yours</h2>
+            <p class="note">Hec kani nhai bbe 🌚... urisei hako. As much as I hate saying this, but haa the truth is <strong>ndakusuwa</strong>... zvekutodaro. You are the morning light that sneaks through my window, the reason my heart beats faster, and the future I can't wait to build.
+              <br><br>
+              Anyways which plans do you have for life, coz as for me it's getting married to you as soon as I can.... let's hope handizobhaize our future. Every day with you feels like a gift I never want to unwrap too quickly. 💍
+            </p>
+          </div>
+
+          <div class="panel">
+            <div class="poems">
+              <div class="poem">
+                <p>
+                  In a world full of temporary things,<br>
+                  you are my constant, my forever spring. 🌸<br>
+                  When I close my eyes and dream of home,<br>
+                  it's your heartbeat I hear, never alone. 💓
+                </p>
+              </div>
+
+              <div class="poem">
+                <p>
+                  They say love is blind, but mine has perfect sight —<br>
+                  I see your flaws and love them more each night. 🌙<br>
+                  Every imperfection makes you more divine,<br>
+                  I'm grateful every star aligned to make you mine. ✨
+                </p>
+              </div>
+
+              <div class="poem">
+                <p>
+                  If I could write your name across the sky,<br>
+                  every cloud would know the reason why<br>
+                  my heart beats faster when you're near —<br>
+                  you're the love I've waited lifetimes for, my dear. 💍
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <h2 style="font-family:'Dancing Script',cursive;color:var(--accent);font-size:22px;margin:0 0 12px 0">My promise to you</h2>
+            <p class="note">Tafa — Every day I find a new reason to choose you. You are my safe harbor in every storm, my celebration in every joy, and my strength when I feel weak. I want to be the man who holds your dreams as carefully as I hold your hand, who fights for your happiness as fiercely as I fight for our love. 
+              <br><br>
+              I promise to love you in the small moments — when you're grumpy in the morning, when you're dancing in the kitchen, when you're crying at sad movies. I promise to choose us every single day, to build something beautiful and unbreakable with you. You are not just my favorite person; you are my person, my home, my forever and always. 🦥💕
+            </p>
+          </div>
+        </main>
+
+        <aside class="sidebar" aria-label="Sidebar with flirty lines and moments">
+          <div class="panel" aria-labelledby="whispers">
+            <h3 id="whispers">Things I whisper to the stars about you</h3>
+            <ul class="flirty-lines" aria-hidden="false">
+              <li>Baby, ndakusuwa — come closer so I can prove it. 🌚</li>
+              <li>You + me + a late night playlist = trouble (the best kind). 🔥</li>
+              <li>Your eyes hold galaxies I want to explore forever. ✨</li>
+              <li>Every time I see you, I realise how lucky i am to have you. 💫</li>
+              <li>I want to love you in languages that don't exist yet. 💕</li>
+              <li>You're the reason I believe in true love. </li>
+            </ul>
+            <div style="margin-top:14px">
+            </div>
+          </div>
+
+          <div class="panel">
+            <h3>Moments I dream about us</h3>
+            <ol class="playlist">
+              <li>🏠 Building a home where your laughter echoes in every room</li>
+              <li>👑 Calling you my wife and meaning it with every fiber</li>
+              <li>🌅 Growing old together, still stealing kisses like teenagers</li>
+              <li>💍 The day you say yes and make me the luckiest man alive</li>
+            </ol>
+            <div style="margin-top:12px">
+             
+            </div>
+          </div>
+
+          <div class="panel" style="text-align:center">
+            <h3>Made with</h3>
+            <p style="font-size:14px;opacity:0.85;line-height:1.6">
+              Every sleepless night thinking about you 🌙<br>
+              All my favorite songs that remind me of us 🎵<br>
+              Dreams of our future wrapped in stardust ✨<br>
+              And a heart that beats only for you 💓
+            </p>
+          </div>
+        </aside>
+      </div>
+
+      <footer>
+        Made for Tafadzwa • Made by Webster • Forever and always 🌚💕🔥
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    // Lightweight floating hearts — creates few nodes and removes them after animation.
+    const heartsRoot = document.getElementById('hearts');
+    const HEARTS = ['🫂','💍','🌚','💕','🔥'];
+    function createHeart(){
+      const el = document.createElement('div');
+      el.className = 'heart';
+      el.textContent = HEARTS[Math.floor(Math.random()*HEARTS.length)];
+      // random horizontal start
+      el.style.left = (Math.random()*90 + 2) + '%';
+      // random duration
+      const dur = (Math.random()*3 + 5).toFixed(2);
+      el.style.animationDuration = dur + 's';
+      // random size
+      el.style.fontSize = (Math.random()*14 + 14) + 'px';
+      heartsRoot.appendChild(el);
+      // remove after duration + small buffer
+      setTimeout(()=> el.remove(), (parseFloat(dur) + 0.2) * 1000);
+    }
+    // spawn occasionally; keep interval moderate to avoid CPU drain on mobile
+    const heartInterval = setInterval(createHeart, 2000);
+    // initial burst
+    for(let i=0;i<3;i++) setTimeout(createHeart, i*400);
+
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (mq.matches) {
+      clearInterval(heartInterval);
+      document.querySelectorAll('.heart').forEach(h=>h.remove());
+    }
+  </script>
+</body>
+</html>
